@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <a href="https://google.com" target="__blank" onclick="verify()"
+        >Get verification code.</a
+      >
+    </main>
+
+    <script src="push.min.js"></script>
+    <script src="serviceWorker.min.js"></script>
+
+    <script>
+      function verify() {
+        setTimeout(() => {
+          Push.create("Hello world!", {
+            body: "How's it hangin'?",
+            icon: "/icon.png",
+            timeout: 5000,
+            vibrabe: [200, 100],
+            link: "https://google.com",
+            onClick: function () {
+              window.focus();
+              this.close();
+            },
+          });
+        }, 5000);
+      }
+    </script>
+  </body>
+</html>
